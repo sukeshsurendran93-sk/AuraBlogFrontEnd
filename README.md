@@ -14,4 +14,4 @@ A premium blog platform built with React, Vite, Redux Toolkit, and Tailwind CSS.
 - Accessibility — ARIA labels, keyboard navigation, and screen reader support
 
 ## Website Link
-https://aura-blog.vercel.app/
+https://aura-blog-front-end.vercel.app/

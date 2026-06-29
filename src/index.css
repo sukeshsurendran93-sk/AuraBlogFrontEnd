@@ -1,0 +1,260 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .glass-card {
+    @apply bg-white/40 dark:bg-[#283044]/40 backdrop-blur-xl border border-white/40 dark:border-white/10;
+  }
+
+  .aura-glass {
+    @apply bg-white/60 dark:bg-[#131b2e]/40 backdrop-blur-xl border border-white/30 dark:border-white/5;
+  }
+
+  .card-hover-effect {
+    @apply transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10;
+  }
+
+  .sidebar-action {
+    @apply transition-all duration-300 hover:pl-5;
+  }
+
+  .toolbar-btn {
+    @apply transition-all duration-200 hover:bg-primary/10 hover:scale-110;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Prevent text overflow in flex containers */
+  .overflow-wrap-anywhere {
+    overflow-wrap: anywhere;
+    word-wrap: break-word;
+    word-break: break-word;
+  }
+}
+
+@keyframes aura-shift {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  33% {
+    transform: translate(5%, 5%) scale(1.1);
+  }
+
+  66% {
+    transform: translate(-5%, 2%) scale(0.9);
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+body {
+  font-family: 'Manrope', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-display {
+  font-family: 'Hanken Grotesk', sans-serif;
+}
+
+/* ─── CSS Custom Properties for Theme-Aware Quill ─── */
+:root {
+  --ql-toolbar-bg: rgba(255, 255, 255, 0.05);
+  --ql-border: rgba(0, 0, 0, 0.1);
+  --ql-editor-bg: transparent;
+  --ql-editor-fg: #131b2e;
+  --ql-placeholder: rgba(19, 27, 46, 0.35);
+  --ql-stroke: #474554;
+  --ql-fill: #474554;
+  --ql-picker-fg: #474554;
+  --ql-picker-bg: #ffffff;
+  --ql-picker-border: rgba(0, 0, 0, 0.1);
+}
+
+.dark {
+  --ql-toolbar-bg: rgba(255, 255, 255, 0.05);
+  --ql-border: rgba(255, 255, 255, 0.1);
+  --ql-editor-bg: rgba(255, 255, 255, 0.02);
+  --ql-editor-fg: #f2f3ff;
+  --ql-placeholder: rgba(255, 255, 255, 0.2);
+  --ql-stroke: #c9c4d6;
+  --ql-fill: #c9c4d6;
+  --ql-picker-fg: #c9c4d6;
+  --ql-picker-bg: #131b2e;
+  --ql-picker-border: rgba(255, 255, 255, 0.1);
+}
+
+/* Quill Dark Mode Overrides (Theme-Aware via CSS Vars) */
+.ql-toolbar {
+  background: var(--ql-toolbar-bg);
+  border-color: var(--ql-border);
+  border-radius: 12px 12px 0 0;
+}
+
+.ql-container {
+  border-color: var(--ql-border);
+  border-radius: 0 0 12px 12px;
+  background: var(--ql-editor-bg);
+}
+
+.ql-editor {
+  color: var(--ql-editor-fg);
+  min-height: 400px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.ql-editor.ql-blank::before {
+  color: var(--ql-placeholder);
+}
+
+.ql-stroke {
+  stroke: var(--ql-stroke);
+}
+
+.ql-fill {
+  fill: var(--ql-fill);
+}
+
+.ql-picker-label {
+  color: var(--ql-picker-fg);
+}
+
+.ql-picker-options {
+  background: var(--ql-picker-bg);
+  border-color: var(--ql-picker-border);
+}
+
+.ql-picker-item {
+  color: var(--ql-picker-fg);
+}
+
+/* Article Content Styles */
+.article-content p {
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+  color: inherit;
+  overflow-wrap: anywhere;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+.article-content p:last-child {
+  margin-bottom: 0;
+}
+
+.article-content h1,
+.article-content h2,
+.article-content h3,
+.article-content h4,
+.article-content h5,
+.article-content h6 {
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+.article-content h3 {
+  font-size: 1.5rem;
+}
+
+.article-content strong {
+  font-weight: 700;
+}
+
+.article-content ul,
+.article-content ol {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.article-content li {
+  margin-bottom: 0.5rem;
+}
+
+.article-content blockquote {
+  border-left: 4px solid #5a45cb;
+  padding-left: 1rem;
+  margin-left: 0;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+  color: #474554;
+}
+
+.dark .article-content blockquote {
+  color: #c9c4d6;
+}
+
+.article-content code {
+  background: rgba(90, 69, 203, 0.1);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.9em;
+}
+
+.article-content pre {
+  background: #131b2e;
+  color: #f2f3ff;
+  padding: 1rem;
+  border-radius: 12px;
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+}
+
+.dark .article-content pre {
+  background: #1a2440;
+  color: #f2f3ff;
+}
+
+.article-content pre code {
+  background: transparent;
+  padding: 0;
+}
+
+.article-content a {
+  color: #5a45cb;
+  text-decoration: underline;
+}
+
+.dark .article-content a {
+  color: #9b8af3;
+}
+
+.article-content img {
+  max-width: 100%;
+  border-radius: 12px;
+  margin: 1.5rem 0;
+}
+
+.aura-glass {
+  @apply bg-white/60 dark:bg-[#1a2338]/70 backdrop-blur-xl border border-white/30 dark:border-white/10;
+}
+
+.glass-card {
+  @apply bg-white/70 dark:bg-[#283044]/80 backdrop-blur-2xl border border-white/40 dark:border-white/10;
+}
